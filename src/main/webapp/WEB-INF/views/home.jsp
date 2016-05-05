@@ -11,6 +11,10 @@
         <p>The time on the server is ${serverTime}..</p>
        
         <div class="row">
+            <h2><span class="label label-primary">Id: </span></h2>
+        	<h2><span class="label label-default">${project.id}</span></h2>
+        </div> 
+        <div class="row">
             <h2><span class="label label-primary">Name: </span></h2>
         	<h2><span class="label label-default">${project.name}</span></h2>
         </div> 
@@ -28,7 +32,7 @@
         </div> 
       </div>
 
-    </div> <!-- /container -->
+ </div> <!-- /container -->
     
 
 	

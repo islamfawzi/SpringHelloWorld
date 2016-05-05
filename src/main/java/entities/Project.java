@@ -1,12 +1,20 @@
-package com.models;
+package entities;
 
 public class Project {
-
+   
+	private int id;
 	private String name;
 	private String email;
 	private String type;
 	private boolean special;
 	
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}
