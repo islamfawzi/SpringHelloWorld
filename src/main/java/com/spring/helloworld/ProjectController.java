@@ -12,8 +12,17 @@ public class ProjectController {
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
-	@RequestMapping(value="/add", method=RequestMethod.POST)
+	
+	@RequestMapping(value="/add", method=RequestMethod.GET)
 	public String add(){
+		
+		logger.info("GET /project/add");
+		
+		return "add";
+	}
+	
+	@RequestMapping(value="/add", method=RequestMethod.POST)
+	public String save(){
        
 		logger.info("POST /project/add");
 		
@@ -21,7 +30,7 @@ public class ProjectController {
 	}
 	
 	@RequestMapping(value="/add", method=RequestMethod.POST, params={"type=multi"})
-	public String addMulti(){
+	public String saveMulti(){
 		
 		logger.info("POST {type=multi} /project/add");
 		
@@ -29,7 +38,7 @@ public class ProjectController {
 	}
 	
 	@RequestMapping(value="/add", method=RequestMethod.POST, params={"type=multi", "special"})
-	public String addMultiSpecial(){
+	public String saveMultiSpecial(){
 		
 		logger.info("POST {type=multi, special} /project/add");
 		

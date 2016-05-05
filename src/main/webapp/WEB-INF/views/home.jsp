@@ -1,60 +1,40 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <jsp:include page="./header.jsp"></jsp:include>
-<h1>
-	Hello world!  
-</h1>
 
-<P class="red-text" >  The time on the server is ${serverTime}. </P>
 
-<form action="<spring:url value="/project/add" />" method="post">
+<div class="container">
 
-<table cellspacing="10px">
-<tr>
-	<td> <label for="name">Name: </label> </td>
-	<td> <input id="name" name="name" /> </td>
-</tr>
-<tr>
-	<td> <label for="email">Email: </label> </td>
-	<td> <input id="email" name="email" /> </td>
-</tr>
-<tr>
-	<td> <label for="type">Type: </label> </td>
-	<td>
-	  <select id="type" name="type">
-	      <option value="single" >single</option>
-	      <option value="multi"  >multi</option>
-	  </select> 
-	</td>
-</tr>
-<tr>
-	<td></td>
-	<td> <input type="checkbox" id="special" name="special" value="special" /> Special </td>
-</tr>
-<tr>
-   <td></td>
-   <td> <input type="submit" value"add" class="btn" /> <input type="reset"  value"reset" class="btn" /> </td>
-</tr>
-</table>
-</form>
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h1>Spring example</h1>
+        <p>This is a simple spring framework example.</p>
+        <p>The time on the server is ${serverTime}..</p>
+       
+        <div class="row">
+            <h2><span class="label label-primary">Name: </span></h2>
+        	<h2><span class="label label-default">${project.name}</span></h2>
+        </div> 
+        <div class="row">
+        	<h2><span class="label label-primary">Email: </span></h2>
+        	<h2><span class="label label-default">${project.email}</span></h2>
+        </div> 
+        <div class="row">
+        	<h2><span class="label label-primary">Type: </span></h2>
+        	<h2><span class="label label-default">${project.type}</span></h2>
+        </div> 
+        <div class="row">
+        	<h2><span class="label label-primary">Special: </span></h2>
+        	<h2><span class="label label-default">${project.special}</span></h2>
+        </div> 
+      </div>
 
-<table>
-<tr>
-	<td> Name: </td>
- 	<td> ${project.name} </td>
-</tr>
-<tr>
-	<td> Email: </td>
- 	<td> ${project.email} </td>
-</tr>
-<tr>
-	<td> Type: </td>
- 	<td> ${project.type} </td>
-</tr>
-<tr>
-	<td> Special: </td>
- 	<td> ${project.special} </td>
-</tr>
+    </div> <!-- /container -->
+    
 
-</table>
+	
+
+
+	 
+
 </body>
 </html>
