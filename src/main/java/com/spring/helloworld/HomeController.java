@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.models.Project;
+
 /**
  * Handles requests for the application home page.
  */
@@ -33,6 +35,13 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
+		Project project = new Project();
+		project.setName("Project 1");
+		project.setEmail("info@project1.com");
+		project.setType("single");
+		project.setSpecial(true);
+		
+		model.addAttribute("project", project);
 		return "home";
 	}
 	

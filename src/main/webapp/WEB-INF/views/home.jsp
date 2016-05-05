@@ -35,7 +35,26 @@
    <td> <input type="submit" value"add" class="btn" /> <input type="reset"  value"reset" class="btn" /> </td>
 </tr>
 </table>
-
 </form>
+
+<table>
+<tr>
+	<td> Name: </td>
+ 	<td> ${project.name} </td>
+</tr>
+<tr>
+	<td> Email: </td>
+ 	<td> ${project.email} </td>
+</tr>
+<tr>
+	<td> Type: </td>
+ 	<td> ${project.type} </td>
+</tr>
+<tr>
+	<td> Special: </td>
+ 	<td> ${project.special} </td>
+</tr>
+
+</table>
 </body>
 </html>
