@@ -1,7 +1,15 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form"  prefix="form" %>
+
 <jsp:include page="./header.jsp"></jsp:include>
 <div class="container">
-<form action="<spring:url value="/project/add" htmlEscape="true" context="helloworld" />" method="post">
+
+<!-- assign url to variable , Spring url -->
+<spring:url value="/project/add" htmlEscape="true" context="helloworld" var="formUrl" />
+
+<!-- spring form  -->
+<form:form action="${formUrl}" method="POST" modelAttribute="project" >
+
   <div class="form-group">
     <label for="name">Name: </label>
     <input type="text" class="form-control" id="name" name="name" placeholder="Name">
@@ -25,7 +33,8 @@
     </label>
   </div>
   <button type="submit" class="btn btn-default">Submit</button>
-</form>
+</form:form>
+
 </div>
 </body>
 </html>

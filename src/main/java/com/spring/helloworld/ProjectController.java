@@ -25,8 +25,9 @@ public class ProjectController {
 
 	
 	@RequestMapping(value="/add", method=RequestMethod.GET)
-	public String add(HttpSession session){
+	public String add(HttpSession session, Model model){
 		session.setAttribute("token", "12345");
+		model.addAttribute("project", new Project());
 		logger.info("GET /project/add");
 		
 		return "add";
