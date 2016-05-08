@@ -1,7 +1,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <jsp:include page="./header.jsp"></jsp:include>
 <div class="container">
-<form action="<spring:url value="/project/add" />" method="post">
+<form action="<spring:url value="/project/add" htmlEscape="true" context="helloworld" />" method="post">
   <div class="form-group">
     <label for="name">Name: </label>
     <input type="text" class="form-control" id="name" name="name" placeholder="Name">
