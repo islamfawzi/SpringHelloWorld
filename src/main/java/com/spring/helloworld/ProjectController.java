@@ -8,11 +8,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import entities.Project;
 import services.Projectservice;
 
 @Controller
@@ -37,10 +39,29 @@ public class ProjectController {
 	 * @param @RequestParam 
 	 */
 	@RequestMapping(value="/add", method=RequestMethod.POST)
-	public String save(HttpSession session, HttpServletRequest request, @RequestParam("email") String email){
-        System.out.println("session value: " + session.getAttribute("token"));
+	public String save(@ModelAttribute Project project, HttpSession session, HttpServletRequest request, @RequestParam("email") String email){
+        
+		/**
+		 * HttpSession Method Argument
+		 */
+		System.out.println("session value: " + session.getAttribute("token"));
+        
+        /**
+         * HttpServletRequest Method Argument
+         */
         System.out.println("name param: " + request.getParameter("name"));
+        
+        /**
+         * @RequestParam Method Argument
+         */
         System.out.println("email param: " + email);
+        
+        /**
+         * DataBinding
+         */
+        System.out.println("DataBinding Project: " + project.toString());
+        
+        
 		logger.info("POST /project/add");
 		
 		return "home";

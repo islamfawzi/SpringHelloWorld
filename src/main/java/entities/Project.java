@@ -19,6 +19,7 @@ public class Project {
 		return name;
 	}
 	public void setName(String name) {
+		System.out.println("setting name with DataBinding");
 		this.name = name;
 	}
 	public String getEmail() {
@@ -39,4 +40,13 @@ public class Project {
 	public void setSpecial(boolean special) {
 		this.special = special;
 	}
+	
+	@Override
+	public String toString() {
+		return "Project [id=" + id + ", name=" + name +
+			   ", email=" + email + ", type=" + type +
+			   ", special=" + special + "]";
+	}
+	
+	
 }
