@@ -1,5 +1,8 @@
 package com.spring.helloworld;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import services.Projectservice;
 
@@ -19,16 +23,24 @@ public class ProjectController {
 
 	
 	@RequestMapping(value="/add", method=RequestMethod.GET)
-	public String add(){
-		
+	public String add(HttpSession session){
+		session.setAttribute("token", "12345");
 		logger.info("GET /project/add");
 		
 		return "add";
 	}
 	
+	/**
+	 * Method Arguments
+	 * @param Httpsession
+	 * @param HttpServletRequest
+	 * @param @RequestParam 
+	 */
 	@RequestMapping(value="/add", method=RequestMethod.POST)
-	public String save(){
-       
+	public String save(HttpSession session, HttpServletRequest request, @RequestParam("email") String email){
+        System.out.println("session value: " + session.getAttribute("token"));
+        System.out.println("name param: " + request.getParameter("name"));
+        System.out.println("email param: " + email);
 		logger.info("POST /project/add");
 		
 		return "home";
@@ -51,7 +63,7 @@ public class ProjectController {
 	}
 	
 	/**
-	 * initialize the service (db service)
+	 * initialize the service (ex: db service)
 	 */
 	@Autowired
 	private Projectservice projectservice;
@@ -66,7 +78,6 @@ public class ProjectController {
 	
 	@RequestMapping(value="/{projectId}")
 	public String find(Model model, @PathVariable("projectId") int id){
-		
 		model.addAttribute("project", projectservice.find(id));
 		return "project";
 	}
