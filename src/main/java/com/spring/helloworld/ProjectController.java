@@ -36,6 +36,7 @@ public class ProjectController {
 		
 		model.addAttribute("project", new Project());
 		
+		/**
 		List selectValues = new LinkedList(Arrays.asList(
 				 new String[]{"single", "multi"}));
 		model.addAttribute("selectValues", selectValues);
@@ -47,10 +48,32 @@ public class ProjectController {
 		List radiobtns = new LinkedList(Arrays.asList(
 				new String[]{"Hours", "Piece", "Tons"}));
 		model.addAttribute("radiobtns", radiobtns);
+		**/
 		
 		logger.info("GET /project/add");
 		
 		return "add";
+	}
+	
+	/**
+	 *  assign List for the (select, checkboxes, radioBtns) on the view
+	 */
+	@ModelAttribute("selectValues")
+	public List<String> getSelectValues(){
+		return new LinkedList(Arrays.asList(
+				 new String[]{"single", "multi"}));
+	}
+	
+	@ModelAttribute("checkboxes")
+	public List<String> getCheckboxes(){
+		return new LinkedList(Arrays.asList(
+				new String[]{"Lead Time", "Special Rate", "Requires Approval"}));
+	}
+	
+	@ModelAttribute("radiobtns")
+	public List<String> getRadioBtns(){
+		return new LinkedList(Arrays.asList(
+				new String[]{"Hours", "Piece", "Tons"}));
 	}
 	
 	/**
