@@ -11,3 +11,12 @@
 h2{
 	float: left;
 }
+
+.radiobtns + label{
+	padding: 5px !important
+}
+
+.checkboxes + label {
+	padding-left: 0px !important;
+	padding-right: 30px;
+}

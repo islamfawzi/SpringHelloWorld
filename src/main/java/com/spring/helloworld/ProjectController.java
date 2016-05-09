@@ -1,5 +1,10 @@
 package com.spring.helloworld;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -26,8 +31,23 @@ public class ProjectController {
 	
 	@RequestMapping(value="/add", method=RequestMethod.GET)
 	public String add(HttpSession session, Model model){
+		
 		session.setAttribute("token", "12345");
+		
 		model.addAttribute("project", new Project());
+		
+		List selectValues = new LinkedList(Arrays.asList(
+				 new String[]{"single", "multi"}));
+		model.addAttribute("selectValues", selectValues);
+		
+		List checkboxes = new LinkedList(Arrays.asList(
+				new String[]{"Lead Time", "Special Rate", "Requires Approval"}));
+		model.addAttribute("checkboxes", checkboxes);
+		
+		List radiobtns = new LinkedList(Arrays.asList(
+				new String[]{"Hours", "Piece", "Tons"}));
+		model.addAttribute("radiobtns", radiobtns);
+		
 		logger.info("GET /project/add");
 		
 		return "add";
@@ -60,7 +80,7 @@ public class ProjectController {
         /**
          * DataBinding
          */
-        System.out.println("DataBinding Project: " + project.toString());
+        System.out.println("DataBinding Project: " + project);
         
         
 		logger.info("POST /project/add");

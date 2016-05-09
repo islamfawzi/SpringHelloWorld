@@ -1,13 +1,32 @@
 package entities;
 
+import java.util.Arrays;
+
 public class Project {
    
 	private int id;
+	
+	// inputs
 	private String name;
 	private String email;
+	
+	// select
 	private String type;
+	
+	// checkbox
 	private boolean special;
 	
+	// radio btn
+	private String unitOfMeasure;
+	
+	// checkboxes
+	private String[] indicators;
+	
+	// textArea
+	private String notes;
+	
+	// composition
+	private Sponser sponser;
 	
 	public int getId() {
 		return id;
@@ -40,13 +59,34 @@ public class Project {
 	public void setSpecial(boolean special) {
 		this.special = special;
 	}
-	
+	public String getUnitOfMeasure() {
+		return unitOfMeasure;
+	}
+	public void setUnitOfMeasure(String unitOfMeasure) {
+		this.unitOfMeasure = unitOfMeasure;
+	}
+	public String[] getIndicators() {
+		return indicators;
+	}
+	public void setIndicators(String[] indicators) {
+		this.indicators = indicators;
+	}
+	public String getNotes() {
+		return notes;
+	}
+	public void setNotes(String notes) {
+		this.notes = notes;
+	}
+	public Sponser getSponser() {
+		return sponser;
+	}
+	public void setSponser(Sponser sponser) {
+		this.sponser = sponser;
+	}
 	@Override
 	public String toString() {
-		return "Project [id=" + id + ", name=" + name +
-			   ", email=" + email + ", type=" + type +
-			   ", special=" + special + "]";
+		return "Project [id=" + id + ", name=" + name + ", email=" + email + ", type=" + type + ", special=" + special
+				+ ", unitOfMeasure=" + unitOfMeasure + ", indicators=" + Arrays.toString(indicators) + ", notes="
+				+ notes + ", sponser=" + sponser + "]";
 	}
-	
-	
 }
