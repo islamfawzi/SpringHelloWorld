@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import entities.Project;
 import services.Projectservice;
@@ -124,8 +125,9 @@ public class ProjectController {
 	}
 	
 	@RequestMapping(value="/save")
-	public String save(@ModelAttribute Project project){
+	public String save(@ModelAttribute Project project, SessionStatus status){
 		System.out.println("save method: " + project);
+		status.setComplete();
 		return "home";
 	}
 	
