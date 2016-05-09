@@ -1,6 +1,7 @@
 package entities;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class Project {
    
@@ -27,6 +28,8 @@ public class Project {
 	
 	// composition
 	private Sponser sponser;
+	
+	private List<String> contacts;
 	
 	public int getId() {
 		return id;
@@ -83,10 +86,17 @@ public class Project {
 	public void setSponser(Sponser sponser) {
 		this.sponser = sponser;
 	}
+	public List<String> getContacts() {
+		return contacts;
+	}
+	public void setContacts(List<String> contacts) {
+		this.contacts = contacts;
+	}
+	
 	@Override
 	public String toString() {
 		return "Project [id=" + id + ", name=" + name + ", email=" + email + ", type=" + type + ", special=" + special
 				+ ", unitOfMeasure=" + unitOfMeasure + ", indicators=" + Arrays.toString(indicators) + ", notes="
-				+ notes + ", sponser=" + sponser + "]";
+				+ notes + ", sponser=" + sponser + ", contacts=" + contacts + "]";
 	}
 }

@@ -21,6 +21,8 @@
     <form:input path="email" cssClass="form-control" id="email" placeholder="Password" />
   </div>
   
+  <hr />
+  
   <div class="form-group">
     <label for="sponser-name">Sponser name: </label>
     <form:input path="sponser.name" cssClass="form-control" id="sponser-name" placeholder="sponser name" />
@@ -36,6 +38,25 @@
     <form:input path="sponser.phone" cssClass="form-control" id="sponser-phone" placeholder="sponser phone" />
   </div>
   
+  <hr />
+  
+  <div class="form-group">
+    <label for="contact1">Contact1: </label>
+    <form:input path="contacts[0]" cssClass="form-control" id="contact1" placeholder="contact1" />
+  </div>
+
+  <div class="form-group">
+    <label for="contact2">Contact2: </label>
+    <form:input path="contacts[1]" cssClass="form-control" id="contact2" placeholder="contact2" />
+  </div>
+  
+  <div class="form-group">
+    <label for="contact3">Contact3: </label>
+    <form:input path="contacts[2]" cssClass="form-control" id="contact3" placeholder="contact3" />
+  </div>
+  
+  <hr />
+    
   <div class="form-group">
     <label for="type">Type: </label>
     <form:select path="type" id="type" items="${selectValues}" />
