@@ -18,12 +18,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import entities.Project;
 import services.Projectservice;
 
 @Controller
 @RequestMapping(value="/project")
+@SessionAttributes("project")   // only applicable to a single controller
 public class ProjectController {
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -34,9 +36,9 @@ public class ProjectController {
 		
 		session.setAttribute("token", "12345");
 		
-		model.addAttribute("project", new Project());
-		
 		/**
+		model.addAttribute("project", new Project());
+	
 		List selectValues = new LinkedList(Arrays.asList(
 				 new String[]{"single", "multi"}));
 		model.addAttribute("selectValues", selectValues);
@@ -53,6 +55,12 @@ public class ProjectController {
 		logger.info("GET /project/add");
 		
 		return "add";
+	}
+	
+	@ModelAttribute("project")
+	public Project getProject(){
+		System.out.println("add Project instance");
+		return new Project();
 	}
 	
 	/**
@@ -75,7 +83,11 @@ public class ProjectController {
 		return new LinkedList(Arrays.asList(
 				new String[]{"Hours", "Piece", "Tons"}));
 	}
-	
+
+	@RequestMapping(value="/review")
+	public String review(@ModelAttribute Project project){
+		return "review";
+	}
 	/**
 	 * Method Arguments
 	 * @param Httpsession
@@ -110,6 +122,13 @@ public class ProjectController {
 		
 		return "home";
 	}
+	
+	@RequestMapping(value="/save")
+	public String save(@ModelAttribute Project project){
+		System.out.println("save method: " + project);
+		return "home";
+	}
+	
 	
 	@RequestMapping(value="/add", method=RequestMethod.POST, params={"type=multi"})
 	public String saveMulti(){
