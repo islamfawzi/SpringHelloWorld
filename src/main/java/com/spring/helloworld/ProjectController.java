@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,7 +38,7 @@ public class ProjectController {
 	
 	@RequestMapping(value="/add", method=RequestMethod.GET)
 	public String add(HttpSession session, Model model){
-		
+	
 		session.setAttribute("token", "12345");
 		
 		/**
@@ -99,7 +100,7 @@ public class ProjectController {
 	 * @param @RequestParam 
 	 */
 	@RequestMapping(value="/add", method=RequestMethod.POST)
-	public String save(@ModelAttribute Project project,
+	public String save(@Valid @ModelAttribute Project project,
 			           HttpSession session, 
 			           HttpServletRequest request, 
 			           @RequestParam("email") String email,
@@ -182,5 +183,22 @@ public class ProjectController {
 	public String find(Model model, @PathVariable("projectId") int id){
 		model.addAttribute("project", projectservice.find(id));
 		return "project";
+	}
+	
+	/**
+	 * Exception handler
+	 */
+	
+	@RequestMapping(value="exception")
+	public void exception(){
+		if(1==1){
+			throw new RuntimeException("There is an error");
+		}
+	}
+	
+	@ExceptionHandler(Exception.class)
+	public String handleException(HttpServletRequest request){
+		
+		return "handle_exceptions";
 	}
 }

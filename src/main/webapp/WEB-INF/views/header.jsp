@@ -32,6 +32,7 @@
         <li class="active"><a href="<spring:url value="/" />">Home<span class="sr-only">(current)</span></a></li>
         <li><a href="<spring:url value="/project/add" />">Add</a></li>
         <li><a href="<spring:url value="/project/all" />">Projects</a></li>
+        <li><a href="<spring:url value="/project/exception" />">Exception Handler</a></li>
       </ul>
       
       

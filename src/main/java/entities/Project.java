@@ -3,12 +3,17 @@ package entities;
 import java.util.Arrays;
 import java.util.List;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+
 public class Project {
    
 	private int id;
 	
 	// inputs
 	private String name;
+	
+	@Email
 	private String email;
 	
 	// select
@@ -24,6 +29,7 @@ public class Project {
 	private String[] indicators;
 	
 	// textArea
+	@NotBlank(message="the notes are required")
 	private String notes;
 	
 	// composition

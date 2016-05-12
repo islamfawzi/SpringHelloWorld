@@ -7,6 +7,8 @@ import org.springframework.validation.Validator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.servlet.http.HttpServletRequest;
+
 public class ProjectValidator implements Validator {
 
 	 private Pattern pattern;
@@ -51,12 +53,7 @@ public class ProjectValidator implements Validator {
 			if(!matcher.matches()){
 				error.rejectValue("email", "email.not_match",
 					      "Not Valid Email");	
-			}
-					
+			}			
 		}
-		
-		
-
 	}
-
 }
