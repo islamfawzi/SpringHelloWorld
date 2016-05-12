@@ -5,8 +5,8 @@
 <div class="container">
 
 <!-- assign url to variable , Spring url -->
-<!-- <spring:url value="/project/add" htmlEscape="true" context="helloworld" var="formUrl" /> -->
-<spring:url value="/project/review" htmlEscape="true" context="helloworld" var="formUrl" />
+<!-- <spring:url value="/project/review" htmlEscape="true" context="helloworld" var="formUrl" /> -->
+<spring:url value="/project/add" htmlEscape="true" context="helloworld" var="formUrl" />
 
 <!-- spring form  -->
 <form:form action="${formUrl}" method="POST" modelAttribute="project" >

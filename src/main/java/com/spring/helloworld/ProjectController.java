@@ -7,12 +7,14 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +24,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import entities.Project;
+import entities.ProjectValidator;
 import services.Projectservice;
 
 @Controller
@@ -96,8 +99,21 @@ public class ProjectController {
 	 * @param @RequestParam 
 	 */
 	@RequestMapping(value="/add", method=RequestMethod.POST)
-	public String save(@ModelAttribute Project project, HttpSession session, HttpServletRequest request, @RequestParam("email") String email){
+	public String save(@ModelAttribute Project project,
+			           HttpSession session, 
+			           HttpServletRequest request, 
+			           @RequestParam("email") String email,
+			           BindingResult binding){
         
+		ProjectValidator validator = new ProjectValidator();
+		validator.validate(project, binding);
+		
+		if(binding.hasErrors()){
+			System.out.println("not valid");
+			return "add";
+		}else{
+			System.out.println("valid");
+		}
 		/**
 		 * HttpSession Method Argument
 		 */

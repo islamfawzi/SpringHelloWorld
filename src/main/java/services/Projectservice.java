@@ -36,7 +36,7 @@ public class Projectservice {
 	
 	public Project find(int id){
 		
-		return projects.stream().filter(p ->
+		return (Project) projects.stream().filter(p ->
 		{
 			return p.getId() == id; 
 		}).collect(Collectors.toList()).get(0);
