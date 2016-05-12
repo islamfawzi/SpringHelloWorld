@@ -13,13 +13,27 @@
 
   <div class="form-group">
     <label for="name">Name: </label>
+    
     <!-- <input type="text" class="form-control" id="name" name="name" placeholder="Name"> -->
     <form:input path="name" id="name" cssClass="form-control" placeholder="Name" />
+    
+    <!-- Validation error message -->
+    <p style="color: red; font-style: italic;">
+    <form:errors path="name" /> 
+    </p>
+    
   </div>
   
   <div class="form-group">
     <label for="email">Email: </label>
+    
     <form:input path="email" cssClass="form-control" id="email" placeholder="Password" />
+    
+    <!-- Validation error message -->
+    <p style="color: red; font-style: italic;">
+    <form:errors path="email" /> 
+    </p>
+    
   </div>
   
   <hr />
